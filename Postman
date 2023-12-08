@@ -1,0 +1,12 @@
+pm.sendRequest({
+    url: 'https://api.pokemonbattle.me:9104/pokemons?in_pokeball=1', // Замените на реальный URL
+    method: 'GET',
+}, function (err, response) {
+    if (err) {
+        console.error(err);
+    } else {
+        var jsonData = response.json();
+        var protivnikId = jsonData[3].id; // Получаем айди первого покемона
+        pm.collectionVariables.set('Protivnik', protivnikId); // Сохраняем айди в переменной коллекции
+    }
+});
